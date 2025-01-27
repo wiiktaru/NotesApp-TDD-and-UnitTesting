@@ -16,7 +16,7 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void AddNewNote_ValidInput_AddsNewNoteToList()
+        public void AddNewNote_ValidNote_AddsNewNoteToList()
         { 
             noteRepository.AddNewNote(note);
             notesCount = noteRepository.Notes.Count;
@@ -25,7 +25,7 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void AddNewNote_NoNote_DoesNotAddANoteToList()
+        public void AddNewNote_NullNote_DoesNotAddANoteToList()
         {
             noteRepository.AddNewNote(null);
             notesCount = noteRepository.Notes.Count;
