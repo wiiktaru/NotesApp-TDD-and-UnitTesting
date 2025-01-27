@@ -4,12 +4,19 @@ namespace NotesApp.UnitTests
     [TestClass]
     public class NoteRepositoryTests
     {
+        NoteRepository noteRepository;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            noteRepository = new NoteRepository();
+        }
+
         [TestMethod]
         public void AddNewNote_ValidInput_AddsNewNoteToList()
-        {
-            NotesApp.NoteRepository noteRepo = new NotesApp.NoteRepository();
-            noteRepo.AddNewNote();
-            int notesCount = noteRepo.Notes.Count;
+        { 
+            noteRepository.AddNewNote();
+            int notesCount = noteRepository.Notes.Count;
 
             Assert.AreEqual(notesCount, 1);
         }

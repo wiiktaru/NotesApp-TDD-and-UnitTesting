@@ -8,7 +8,12 @@ namespace NotesApp
 {
     public class NoteRepository
     {
-        public List<Note> Notes = new List<Note>();
+        public List<Note> Notes;
+
+        public NoteRepository() 
+        {
+            Notes = new List<Note>();
+        }
         public void AddNewNote()
         {
             Note note = new Note();
