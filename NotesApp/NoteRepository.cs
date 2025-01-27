@@ -14,11 +14,15 @@ namespace NotesApp
         {
             Notes = new List<Note>();
         }
-        public void AddNewNote()
+        public void AddNewNote(Note note)
         {
-            Note note = new Note();
-            Notes.Add(note);
+            if (note == null)
+            {
+                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä");
+                return;
+            }
 
+            Notes.Add(note);
         }
     }
 

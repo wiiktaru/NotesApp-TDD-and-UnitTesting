@@ -6,17 +6,19 @@ namespace NotesApp.UnitTests
     {
         NoteRepository noteRepository;
         int notesCount;
+        Note note; 
 
         [TestInitialize]
         public void TestInitialize()
         {
             noteRepository = new NoteRepository();
+            note = new Note();
         }
 
         [TestMethod]
         public void AddNewNote_ValidInput_AddsNewNoteToList()
         { 
-            noteRepository.AddNewNote();
+            noteRepository.AddNewNote(note);
             notesCount = noteRepository.Notes.Count;
 
             Assert.AreEqual(notesCount, 1);
@@ -25,7 +27,9 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void AddNewNote_NoNote_DoesNotAddANoteToList()
         {
-            Assert.AreEqual(notesCount, 1);
+            noteRepository.AddNewNote(null);
+            notesCount = noteRepository.Notes.Count;
+            Assert.AreEqual(notesCount, 0);
         }
     }
 }
