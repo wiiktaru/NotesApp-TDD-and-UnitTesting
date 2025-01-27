@@ -14,6 +14,7 @@ namespace NotesApp
         {
             Notes = new List<Note>();
         }
+
         public void AddNewNote(Note note)
         {
             if (note == null)
@@ -21,14 +22,15 @@ namespace NotesApp
                 Console.WriteLine("Virhe, merkintä ei voi olla tyhjä");
                 return;
             }
-
+            foreach (var item in Notes) 
+            {
+                if (item.Id == note.Id)
+                {
+                    Console.WriteLine("Virhe, merkintä on jo olemassa");
+                    return;
+                }
+            }  
             Notes.Add(note);
         }
-    }
-
-    public class Note
-    {
-        public int Id;
-
     }
 }
