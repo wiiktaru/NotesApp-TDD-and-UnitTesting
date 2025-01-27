@@ -31,5 +31,20 @@ namespace NotesApp.UnitTests
             notesCount = noteRepository.Notes.Count;
             Assert.AreEqual(notesCount, 0);
         }
+
+        [TestMethod]
+        public void AddNewNote_DuplicateNote_DoesNotAddNoteToList()
+        {
+            note = new Note();
+            note.Id = 1;
+            noteRepository.AddNewNote(note);
+            notesCount = noteRepository.Notes.Count;
+
+            Note note1 = new Note();
+            note1.Id = 1;
+            noteRepository.AddNewNote(note1);
+            int newCount = noteRepository.Notes.Count;
+            Assert.AreEqual(notesCount, newCount);
+        }
     }
 }
