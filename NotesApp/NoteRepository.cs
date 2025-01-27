@@ -18,6 +18,7 @@ namespace NotesApp
         {
             Note note = new Note();
             Notes.Add(note);
+
         }
     }
 
