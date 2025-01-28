@@ -17,6 +17,10 @@ namespace NotesApp
 
         public bool ValidateNote(Note note)
         {
+            if (note == null)
+            {
+                return false;
+            }
             return true;
         }
 

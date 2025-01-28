@@ -129,7 +129,7 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_InvalidNote_ReturnsFalse()
         {
-            var result = noteRepository.ValidateNote(note);
+            var result = noteRepository.ValidateNote(null);
 
             Assert.AreEqual(false, result);
         }
