@@ -125,5 +125,13 @@ namespace NotesApp.UnitTests
 
             Assert.AreEqual(true, result);
         }
+
+        [TestMethod]
+        public void ValidateNote_InvalidNote_ReturnsFalse()
+        {
+            var result = noteRepository.ValidateNote(note);
+
+            Assert.AreEqual(false, result);
+        }
     }
 }
