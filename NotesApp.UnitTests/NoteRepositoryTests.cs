@@ -100,5 +100,14 @@ namespace NotesApp.UnitTests
 
             Assert.AreEqual(note.Title, "AA");
         }
+
+        [TestMethod]
+        public void EditNoteTitle_InvalidNote_DoesNotEditTitle()
+        {
+            note.Title = "AA";
+            noteRepository.EditNoteTitle(null, "BB");
+
+            Assert.AreEqual(note.Title, "AA");
+        }
     }
 }
