@@ -113,8 +113,16 @@ namespace NotesApp.UnitTests
 
             Note note1 = new Note { Id = 2 };
             noteRepository.EditNoteTitle(note1, "BB");
-
+            ;
             Assert.AreEqual(note.Title, "AA");
+        }
+
+        [TestMethod]
+        public void ValidateNote_ValidNote_ReturnsTrue()
+        {
+            var result = ValidateNote(note);
+
+            Assert.AreEqual("true", result);
         }
     }
 }
