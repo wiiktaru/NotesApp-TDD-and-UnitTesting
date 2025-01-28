@@ -45,5 +45,15 @@ namespace NotesApp.UnitTests
             int newCount = noteRepository.Notes.Count;
             Assert.AreEqual(notesCount, newCount);
         }
+
+        [TestMethod]
+        public void DeleteNote_ValidNote_DeletesNoteFromList()
+        {
+            noteRepository.AddNewNote(note);
+            noteRepository.DeleteNote(noteId);
+            notesCount = noteRepository.Notes.Count;
+
+            Assert.AreEqual(notesCount, 0);
+        }
     }
 }
