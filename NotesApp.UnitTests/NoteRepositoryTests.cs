@@ -121,6 +121,8 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_ValidNote_ReturnsTrue()
         {
+            note.Id = 1;
+            noteRepository.Notes.Add(note);
             var result = noteRepository.ValidateNote(note);
 
             Assert.AreEqual(true, result);
@@ -129,7 +131,10 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_InvalidNote_ReturnsFalse()
         {
-            var result = noteRepository.ValidateNote(null);
+            note.Id = 1;
+            noteRepository.Notes.Add(note); 
+            Note note2 = new Note{ Id = 2 };
+            var result = noteRepository.ValidateNote(note2);
 
             Assert.AreEqual(false, result);
         }

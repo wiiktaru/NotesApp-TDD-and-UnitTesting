@@ -21,7 +21,16 @@ namespace NotesApp
             {
                 return false;
             }
-            return true;
+
+            foreach (var item in Notes)
+            {
+                if (item.Id == note.Id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void AddNewNote(Note note)
