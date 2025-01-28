@@ -40,7 +40,19 @@ namespace NotesApp
         }
 
         public bool CheckDuplicateNotes(Note note)
-        {
+        { 
+            noteValidation = ValidateNote(note);
+
+            if (noteValidation)
+            {
+                foreach (var item in Notes)
+                {
+                    if (item.Id == note.Id)
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
 
