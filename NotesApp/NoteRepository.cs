@@ -35,6 +35,11 @@ namespace NotesApp
 
         public void DeleteNote(Note note)
         {
+            if (note == null)
+            {
+                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
+                return;
+            }
             foreach (var item in Notes)
             {
                 if (item.Id == note.Id)

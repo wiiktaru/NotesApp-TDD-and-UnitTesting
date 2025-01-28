@@ -60,9 +60,11 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void DeleteNote_NullNote_DoesNotDeleteNoteFromList()
         {
+            noteRepository.AddNewNote(note);
+            
             noteRepository.DeleteNote(null);
 
-            Assert.AreEqual(notesCount, 1);
+            Assert.AreEqual(noteRepository.Notes.Count, 1);
         }
     }
 }
