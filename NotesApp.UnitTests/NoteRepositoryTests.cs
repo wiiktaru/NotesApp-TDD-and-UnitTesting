@@ -66,5 +66,19 @@ namespace NotesApp.UnitTests
 
             Assert.AreEqual(noteRepository.Notes.Count, 1);
         }
+
+        [TestMethod]
+       public void DeleteNote_InvalidNote_DoesNotDeleteNoteFromList()
+        {
+            note.Id = 1;
+            noteRepository.AddNewNote(note);
+
+            Note invalidNote = new Note { Id = 2 }; 
+
+            noteRepository.DeleteNote(invalidNote);
+
+            Assert.AreEqual(1, noteRepository.Notes.Count);
+
+        }
     }
 }
