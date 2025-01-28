@@ -39,6 +39,11 @@ namespace NotesApp
             return false;
         }
 
+        public bool CheckDuplicateNotes(Note note)
+        {
+            return false;
+        }
+
         public void AddNewNote(Note note)
         {
             noteValidation = ValidateNote(note);
