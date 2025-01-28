@@ -4,8 +4,8 @@ namespace NotesApp.UnitTests
     [TestClass]
     public class NoteRepositoryTests
     {
-        NoteRepository noteRepository;
-        int notesCount;
+        private NoteRepository noteRepository;
+        private int notesCount;
         Note note; 
 
         [TestInitialize]
