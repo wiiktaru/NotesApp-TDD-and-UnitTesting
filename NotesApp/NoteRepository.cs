@@ -35,20 +35,28 @@ namespace NotesApp
 
         public void DeleteNote(Note note)
         {
+            bool noteDeleted = false;
+
             if (note == null)
             {
                 Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
                 return;
             }
+
             foreach (var item in Notes)
             {
                 if (item.Id == note.Id)
                 {
                     Notes.Remove(item);
+                    noteDeleted = true;
                     break;
                 }
             }
-            Console.WriteLine("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
+
+            if(!noteDeleted)
+            {
+                Console.WriteLine("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
+            }
         }
     }
 }
