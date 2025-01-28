@@ -59,5 +59,10 @@ namespace NotesApp
                 Console.WriteLine("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
             }
         }
+
+        public void EditNote(Note note)
+        {
+            note.Title = "BB";
+        }
     }
 }
