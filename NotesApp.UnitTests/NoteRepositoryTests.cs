@@ -79,5 +79,15 @@ namespace NotesApp.UnitTests
 
             Assert.AreEqual(1, noteRepository.Notes.Count);
         }
+
+        [TestMethod]
+        public void EditNote_ValidNote_EditsTitle()
+        {
+            note.Title = "AA";
+            noteRepository.EditNote(note);
+            string comparisonTitle = "BB";
+
+            Assert.AreEqual(note.Title, comparisonTitle);
+        }
     }
 }
