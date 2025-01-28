@@ -60,7 +60,7 @@ namespace NotesApp
             }
         }
 
-        public void EditNote(Note note)
+        public void EditNoteTitle(Note note)
         {
             note.Title = "BB";
         }

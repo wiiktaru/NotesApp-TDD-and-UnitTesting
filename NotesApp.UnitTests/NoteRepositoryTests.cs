@@ -81,7 +81,7 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void EditNote_ValidNote_EditsTitle()
+        public void EditNoteTitle_ValidNote_EditsTitle()
         {
             note.Title = "AA";
             noteRepository.EditNote(note);
