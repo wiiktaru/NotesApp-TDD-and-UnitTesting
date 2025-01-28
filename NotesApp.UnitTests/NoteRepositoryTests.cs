@@ -83,7 +83,9 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_ValidNote_EditsTitle()
         {
+            note.Id = 1;
             note.Title = "AA";
+            noteRepository.Notes.Add(note);
             noteRepository.EditNoteTitle(note, "BB");
 
             Assert.AreEqual(note.Title, "BB");
@@ -101,11 +103,16 @@ namespace NotesApp.UnitTests
             Assert.AreEqual(note.Title, "AA");
         }
 
+        //TODO extract Null and Invalid id methods
         [TestMethod]
         public void EditNoteTitle_InvalidNote_DoesNotEditTitle()
         {
+            note.Id = 1;
             note.Title = "AA";
-            noteRepository.EditNoteTitle(null, "BB");
+            noteRepository.Notes.Add(note);
+
+            Note note1 = new Note { Id = 2 };
+            noteRepository.EditNoteTitle(note1, "BB");
 
             Assert.AreEqual(note.Title, "AA");
         }

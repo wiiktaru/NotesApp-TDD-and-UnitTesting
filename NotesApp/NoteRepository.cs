@@ -60,18 +60,38 @@ namespace NotesApp
             }
         }
 
+        //TODO Simplify this method 
         public void EditNoteTitle(Note note, string title)
         {
+            bool isOnList = false; 
+
             if(note == null)
             {
                 Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
                 return;
             }
+
+            foreach (var item in Notes)
+            {
+                if (item.Id == note.Id)
+                {
+                    isOnList = true;
+                    break;
+                }
+            }
+
+            if (!isOnList)
+            {
+                Console.WriteLine("Virhe, merkintää ei ole listalla");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
                 return;
             }
+
             note.Title = title;
         }
     }
