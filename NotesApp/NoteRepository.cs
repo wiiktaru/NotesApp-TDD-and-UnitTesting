@@ -62,6 +62,11 @@ namespace NotesApp
 
         public void EditNoteTitle(Note note, string title)
         {
+            if(note == null)
+            {
+                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
