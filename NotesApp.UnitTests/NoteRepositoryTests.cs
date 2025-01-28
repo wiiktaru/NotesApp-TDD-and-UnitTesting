@@ -142,6 +142,16 @@ namespace NotesApp.UnitTests
             Assert.AreEqual(false, result);
         }
 
-  
+        [TestMethod]
+        public void CheckDuplicateNotes_IsDuplicate_ReturnsTrue()
+        {
+            noteRepository.Notes.Add(note);
+
+            Note note1 = new Note { Id = 1 };
+            var result = noteRepository.CheckDuplicateNotes(note1);
+
+            Assert.AreEqual(true, result);
+        }
+
     }
 }
