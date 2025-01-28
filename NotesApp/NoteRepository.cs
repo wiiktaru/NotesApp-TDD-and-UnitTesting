@@ -48,6 +48,7 @@ namespace NotesApp
                     break;
                 }
             }
+            Console.WriteLine("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
         }
     }
 }

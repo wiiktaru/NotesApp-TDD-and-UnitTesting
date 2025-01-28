@@ -78,7 +78,6 @@ namespace NotesApp.UnitTests
             noteRepository.DeleteNote(invalidNote);
 
             Assert.AreEqual(1, noteRepository.Notes.Count);
-
         }
     }
 }
