@@ -35,7 +35,14 @@ namespace NotesApp
 
         public void DeleteNote(Note note)
         {
-            Notes.Remove(note);
+            foreach (var item in Notes)
+            {
+                if (item.Id == note.Id)
+                {
+                    Notes.Remove(item);
+                    break;
+                }
+            }
         }
     }
 }

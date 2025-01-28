@@ -49,11 +49,20 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void DeleteNote_ValidNote_DeletesNoteFromList()
         {
+            note.Id = 1;
             noteRepository.AddNewNote(note);
             noteRepository.DeleteNote(note);
             notesCount = noteRepository.Notes.Count;
 
             Assert.AreEqual(notesCount, 0);
+        }
+
+        [TestMethod]
+        public void DeleteNote_NullNote_DoesNotDeleteNoteFromList()
+        {
+            noteRepository.DeleteNote(null);
+
+            Assert.AreEqual(notesCount, 1);
         }
     }
 }
