@@ -15,6 +15,11 @@ namespace NotesApp
             Notes = new List<Note>();
         }
 
+        public bool ValidateNote(Note note)
+        {
+            return true;
+        }
+
         public void AddNewNote(Note note)
         {
             if (note == null)

@@ -1,4 +1,5 @@
 
+
 namespace NotesApp.UnitTests
 {
     [TestClass]
@@ -120,9 +121,9 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_ValidNote_ReturnsTrue()
         {
-            var result = ValidateNote(note);
+            var result = noteRepository.ValidateNote(note);
 
-            Assert.AreEqual("true", result);
+            Assert.AreEqual(true, result);
         }
     }
 }
