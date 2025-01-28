@@ -32,5 +32,10 @@ namespace NotesApp
             }  
             Notes.Add(note);
         }
+
+        public void DeleteNote(Note note)
+        {
+            Notes.Remove(note);
+        }
     }
 }

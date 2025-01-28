@@ -50,7 +50,7 @@ namespace NotesApp.UnitTests
         public void DeleteNote_ValidNote_DeletesNoteFromList()
         {
             noteRepository.AddNewNote(note);
-            noteRepository.DeleteNote(noteId);
+            noteRepository.DeleteNote(note);
             notesCount = noteRepository.Notes.Count;
 
             Assert.AreEqual(notesCount, 0);
