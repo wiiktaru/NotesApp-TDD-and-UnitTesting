@@ -19,27 +19,28 @@ namespace NotesApp
         {
             if (note == null)
             {
-                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä");
+                WriteErrorMessage("Virhe, merkintä ei voi olla tyhjä");
                 return;
             }
             foreach (var item in Notes) 
             {
                 if (item.Id == note.Id)
                 {
-                    Console.WriteLine("Virhe, merkintä on jo olemassa");
+                    WriteErrorMessage("Virhe, merkintä on jo olemassa");
                     return;
                 }
             }  
             Notes.Add(note);
         }
 
+        //TODO simplify this method 
         public void DeleteNote(Note note)
         {
             bool noteDeleted = false;
 
             if (note == null)
             {
-                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
+                WriteErrorMessage("Virhe, merkintä ei voi olla tyhjä.");
                 return;
             }
 
@@ -55,8 +56,13 @@ namespace NotesApp
 
             if(!noteDeleted)
             {
-                Console.WriteLine("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
+                WriteErrorMessage("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
             }
+        }
+
+        public void WriteErrorMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
