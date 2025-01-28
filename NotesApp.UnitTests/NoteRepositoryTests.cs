@@ -13,16 +13,15 @@ namespace NotesApp.UnitTests
         public void TestInitialize()
         {
             noteRepository = new NoteRepository();
-            note = new Note();
+            note = new Note { Id = 1, Title = "AA" };
         }
 
         [TestMethod]
         public void AddNewNote_ValidNote_AddsNewNoteToList()
         { 
             noteRepository.AddNewNote(note);
-            notesCount = noteRepository.Notes.Count;
 
-            Assert.AreEqual(notesCount, 1);
+            Assert.AreEqual(1, noteRepository.Notes.Count);
         }
 
         [TestMethod]
@@ -36,7 +35,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void AddNewNote_DuplicateNote_DoesNotAddNoteToList()
         {
-            note.Id = 1;
             noteRepository.AddNewNote(note);
             notesCount = noteRepository.Notes.Count;
 
@@ -50,7 +48,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void DeleteNote_ValidNote_DeletesNoteFromList()
         {
-            note.Id = 1;
             noteRepository.AddNewNote(note);
             noteRepository.DeleteNote(note);
             notesCount = noteRepository.Notes.Count;
@@ -71,7 +68,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
        public void DeleteNote_InvalidNote_DoesNotDeleteNoteFromList()
         {
-            note.Id = 1;
             noteRepository.AddNewNote(note);
 
             Note invalidNote = new Note { Id = 2 }; 
@@ -84,7 +80,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_ValidNote_EditsTitle()
         {
-            note.Id = 1;
             note.Title = "AA";
             noteRepository.Notes.Add(note);
             noteRepository.EditNoteTitle(note, "BB");
@@ -108,7 +103,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_InvalidNote_DoesNotEditTitle()
         {
-            note.Id = 1;
             note.Title = "AA";
             noteRepository.Notes.Add(note);
 
@@ -121,7 +115,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_ValidNote_ReturnsTrue()
         {
-            note.Id = 1;
             noteRepository.Notes.Add(note);
             var result = noteRepository.ValidateNote(note);
 
@@ -131,7 +124,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_InvalidNote_ReturnsFalse()
         {
-            note.Id = 1;
             noteRepository.Notes.Add(note); 
             Note note2 = new Note{ Id = 2 };
             var result = noteRepository.ValidateNote(note2);

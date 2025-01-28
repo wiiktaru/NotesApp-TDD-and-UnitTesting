@@ -9,6 +9,7 @@ namespace NotesApp
     public class NoteRepository
     {
         public List<Note> Notes;
+        private bool noteValidation = false; 
 
         public NoteRepository() 
         {
@@ -20,6 +21,11 @@ namespace NotesApp
             if (note == null)
             {
                 return false;
+            }
+
+            if (Notes.Count == 0)
+            {
+                return true; 
             }
 
             foreach (var item in Notes)
@@ -35,20 +41,15 @@ namespace NotesApp
 
         public void AddNewNote(Note note)
         {
-            if (note == null)
+            noteValidation = ValidateNote(note);
+
+            if (noteValidation)
             {
-                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä");
+                Notes.Add(note);
                 return;
             }
-            foreach (var item in Notes) 
-            {
-                if (item.Id == note.Id)
-                {
-                    Console.WriteLine("Virhe, merkintä on jo olemassa");
-                    return;
-                }
-            }  
-            Notes.Add(note);
+
+            Console.WriteLine("Virhe, merkintä on tyhjä tai ei listalla");
         }
 
         //TODO simplify this method 
