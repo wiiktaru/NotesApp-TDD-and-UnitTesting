@@ -71,39 +71,30 @@ namespace NotesApp
             Console.WriteLine("Virhe, merkintä on tyhjä tai ei listalla");
         }
 
-        //TODO simplify this method 
         public void DeleteNote(Note note)
         {
-            bool noteDeleted = false;
+            noteValidation = ValidateNote(note);
 
-            if (note == null)
+            if (noteValidation)
             {
-                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
-                return;
-            }
-
-            foreach (var item in Notes)
-            {
-                if (item.Id == note.Id)
+                foreach (var item in Notes)
                 {
-                    Notes.Remove(item);
-                    noteDeleted = true;
-                    break;
+                    if (item.Id == note.Id)
+                    {
+                        Notes.Remove(item);
+                        break;
+                    }
                 }
             }
 
-            if(!noteDeleted)
-            {
-                Console.WriteLine("Virhe, poistettavaksi tarkoitettu merkintä ei ollut listassa.");
-            }
         }
 
-        //TODO Simplify this method 
-        public void EditNoteTitle(Note note, string title)
-        {
-            bool isOnList = false; 
+            //TODO Simplify this method 
+            public void EditNoteTitle(Note note, string title)
+            {
+            bool isOnList = false;
 
-            if(note == null)
+            if (note == null)
             {
                 Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
                 return;
@@ -131,6 +122,9 @@ namespace NotesApp
             }
 
             note.Title = title;
+
+
         }
+        
     }
 }
