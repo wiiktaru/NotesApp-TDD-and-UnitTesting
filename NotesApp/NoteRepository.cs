@@ -10,6 +10,7 @@ namespace NotesApp
     {
         public List<Note> Notes;
         private bool noteValidation = false; 
+        private bool duplicateNote = false;
 
         public NoteRepository() 
         {
@@ -59,8 +60,9 @@ namespace NotesApp
         public void AddNewNote(Note note)
         {
             noteValidation = ValidateNote(note);
+            duplicateNote = CheckDuplicateNotes(note);
 
-            if (noteValidation)
+            if (noteValidation && !duplicateNote)
             {
                 Notes.Add(note);
                 return;
