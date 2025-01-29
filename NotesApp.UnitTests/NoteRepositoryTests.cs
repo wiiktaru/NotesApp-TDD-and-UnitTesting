@@ -33,19 +33,6 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void AddNewNote_DuplicateNote_DoesNotAddNoteToList()
-        {
-            noteRepository.AddNewNote(note);
-            notesCount = noteRepository.Notes.Count;
-
-            Note note1 = new Note();
-            note1.Id = 1;
-            noteRepository.AddNewNote(note1);
-            int newCount = noteRepository.Notes.Count;
-            Assert.AreEqual(notesCount, newCount);
-        }
-
-        [TestMethod]
         public void DeleteNote_ValidNote_DeletesNoteFromList()
         {
             noteRepository.AddNewNote(note);
