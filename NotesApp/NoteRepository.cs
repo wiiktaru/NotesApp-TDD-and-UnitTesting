@@ -90,42 +90,23 @@ namespace NotesApp
             Console.WriteLine("Virhe, merkintä on tyhjä, ei listalla tai lista on tyhjä");
         }
 
-            //TODO Simplify this method 
-            public void EditNoteTitle(Note note, string title)
-            {
-            bool isOnList = false;
+        public void EditNoteTitle(Note note, string title)
+        {
+            noteValidation = ValidateNote(note);
 
-            if (note == null)
-            {
-                Console.WriteLine("Virhe, merkintä ei voi olla tyhjä.");
-                return;
-            }
-
-            foreach (var item in Notes)
-            {
-                if (item.Id == note.Id)
-                {
-                    isOnList = true;
-                    break;
-                }
-            }
-
-            if (!isOnList)
-            {
-                Console.WriteLine("Virhe, merkintää ei ole listalla");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(title))
+           if (string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
                 return;
             }
 
-            note.Title = title;
+            if (noteValidation && !duplicateNote)
+            {
+                note.Title = title;
+                return;
+            }
 
-
-        }
-        
+            Console.WriteLine("Virhe, merkintä on tyhjä tai ei listalla");
+        } 
     }
 }

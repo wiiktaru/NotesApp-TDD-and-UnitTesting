@@ -129,7 +129,7 @@ namespace NotesApp.UnitTests
         public void EditNoteTitle_NullNote_DoesNotEditTitle()
         {
             noteRepository.EditNoteTitle(null, "BB");
-            ;
+  
             Assert.AreEqual(note.Title, "AA");
         }
 
