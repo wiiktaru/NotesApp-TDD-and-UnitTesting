@@ -86,7 +86,6 @@ namespace NotesApp
                     }
                 }
             }
-
         }
 
             //TODO Simplify this method 

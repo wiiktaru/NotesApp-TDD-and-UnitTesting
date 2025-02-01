@@ -59,6 +59,12 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
+        public void DeleteNote_EmptyNotesList_DoesNotDeleteNoteFromList()
+        {
+            Assert.AreEqual(0, noteRepository.Notes.Count);
+        }
+
+        [TestMethod]
         public void EditNoteTitle_ValidNote_EditsTitle()
         {
             noteRepository.EditNoteTitle(note, "BB");
