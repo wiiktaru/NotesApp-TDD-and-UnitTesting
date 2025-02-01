@@ -38,5 +38,12 @@ namespace NotesApp.UnitTests
             Assert.ThrowsException<ArgumentException>(() => 
             userInteraction.ValidateNoteId(input));
         }
+
+        [TestMethod]
+        public void ValidateNoteId_NullInput_ThrowsArgumentException()
+        {
+            Assert.ThrowsException<ArgumentException>(() =>
+            userInteraction.ValidateNoteId(null));
+        }
     }
 }
