@@ -14,13 +14,12 @@ namespace NotesApp.UnitTests
         {
             noteRepository = new NoteRepository();
             note = new Note { Id = 1, Title = "AA" };
+            noteRepository.Notes.Add(note);
         }
 
         [TestMethod]
         public void AddNewNote_ValidNote_AddsNewNoteToList()
         { 
-            noteRepository.AddNewNote(note);
-
             Assert.AreEqual(1, noteRepository.Notes.Count);
         }
 
@@ -29,13 +28,12 @@ namespace NotesApp.UnitTests
         {
             noteRepository.AddNewNote(null);
             notesCount = noteRepository.Notes.Count;
-            Assert.AreEqual(notesCount, 0);
+            Assert.AreEqual(notesCount, 1);
         }
 
         [TestMethod]
         public void DeleteNote_ValidNote_DeletesNoteFromList()
         {
-            noteRepository.AddNewNote(note);
             noteRepository.DeleteNote(note);
             notesCount = noteRepository.Notes.Count;
 
@@ -45,8 +43,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void DeleteNote_NullNote_DoesNotDeleteNoteFromList()
         {
-            noteRepository.AddNewNote(note);
-            
             noteRepository.DeleteNote(null);
 
             Assert.AreEqual(noteRepository.Notes.Count, 1);
@@ -55,8 +51,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
        public void DeleteNote_InvalidNote_DoesNotDeleteNoteFromList()
         {
-            noteRepository.AddNewNote(note);
-
             Note invalidNote = new Note { Id = 2 }; 
 
             noteRepository.DeleteNote(invalidNote);
@@ -67,8 +61,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_ValidNote_EditsTitle()
         {
-            note.Title = "AA";
-            noteRepository.Notes.Add(note);
             noteRepository.EditNoteTitle(note, "BB");
 
             Assert.AreEqual(note.Title, "BB");
@@ -80,7 +72,6 @@ namespace NotesApp.UnitTests
         [DataRow(" ")]
         public void EditNoteTitle_InvalidTitle_DoesNotEditTitle(string invalidTitle)
         {
-            note.Title = "AA";
             noteRepository.EditNoteTitle(note, invalidTitle);
 
             Assert.AreEqual(note.Title, "AA");
@@ -89,8 +80,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_NullNote_DoesNotEditTitle()
         {
-            noteRepository.Notes.Add(note);
-
             noteRepository.EditNoteTitle(null, "BB");
             ;
             Assert.AreEqual(note.Title, "AA");
@@ -99,8 +88,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_InvalidNoteId_DoesNotEditTitle()
         {
-            noteRepository.Notes.Add(note);
-
             Note note1 = new Note { Id = 2 };
             noteRepository.EditNoteTitle(note1, "BB");
             ;
@@ -110,7 +97,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_ValidNote_ReturnsTrue()
         {
-            noteRepository.Notes.Add(note);
             var result = noteRepository.ValidateNote(note);
 
             Assert.AreEqual(true, result);
@@ -119,7 +105,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void ValidateNote_InvalidNote_ReturnsFalse()
         {
-            noteRepository.Notes.Add(note); 
             Note note2 = new Note{ Id = 2 };
             var result = noteRepository.ValidateNote(note2);
 
@@ -129,8 +114,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void CheckDuplicateNotes_NotDuplicate_ReturnsFalse()
         {
-            noteRepository.Notes.Add(note);
-
             Note note1 = new Note{ Id = 2 };
             var result =  noteRepository.CheckDuplicateNotes(note1); 
 
@@ -140,8 +123,6 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void CheckDuplicateNotes_IsDuplicate_ReturnsTrue()
         {
-            noteRepository.Notes.Add(note);
-
             Note note1 = new Note { Id = 1 };
             var result = noteRepository.CheckDuplicateNotes(note1);
 
