@@ -126,6 +126,16 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
+        public void EditNoteTitle_NullTitle_EditsTitle()
+        {
+            Note note1 = new Note { Id = 2, Title = null };
+            noteRepository.Notes.Add(note1);
+
+            Assert.AreEqual("AA", note1.Title);
+
+        }
+
+        [TestMethod]
         public void EditNoteTitle_NullNote_DoesNotEditTitle()
         {
             noteRepository.EditNoteTitle(null, "BB");
