@@ -134,9 +134,12 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void EditNoteTitle_InvalidNoteId_DoesNotEditTitle()
+        [DataRow (2)]
+        [DataRow(null)]
+        [DataRow(2.1)]
+        public void EditNoteTitle_InvalidNoteId_DoesNotEditTitle(int invalidNoteId)
         {
-            Note note1 = new Note { Id = 2 };
+            Note note1 = new Note { Id = invalidNoteId };
             noteRepository.EditNoteTitle(note1, "BB");
             ;
             Assert.AreEqual(note.Title, "AA");
