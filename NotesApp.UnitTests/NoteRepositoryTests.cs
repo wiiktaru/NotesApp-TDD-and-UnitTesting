@@ -17,6 +17,43 @@ namespace NotesApp.UnitTests
             noteRepository.Notes.Add(note);
         }
 
+
+        [TestMethod]
+        public void ValidateNote_ValidNote_ReturnsTrue()
+        {
+            var result = noteRepository.ValidateNote(note);
+
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void ValidateNote_InvalidNote_ReturnsFalse()
+        {
+            Note note2 = new Note { Id = 2 };
+            var result = noteRepository.ValidateNote(note2);
+
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void CheckDuplicateNotes_NotDuplicate_ReturnsFalse()
+        {
+            Note note1 = new Note { Id = 2 };
+            var result = noteRepository.CheckDuplicateNotes(note1);
+
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void CheckDuplicateNotes_IsDuplicate_ReturnsTrue()
+        {
+            Note note1 = new Note { Id = 1 };
+            var result = noteRepository.CheckDuplicateNotes(note1);
+
+            Assert.AreEqual(true, result);
+        }
+
+
         [TestMethod]
         public void AddNewNote_ValidNote_AddsNewNoteToList()
         { 
@@ -103,41 +140,6 @@ namespace NotesApp.UnitTests
             noteRepository.EditNoteTitle(note1, "BB");
             ;
             Assert.AreEqual(note.Title, "AA");
-        }
-
-        [TestMethod]
-        public void ValidateNote_ValidNote_ReturnsTrue()
-        {
-            var result = noteRepository.ValidateNote(note);
-
-            Assert.AreEqual(true, result);
-        }
-
-        [TestMethod]
-        public void ValidateNote_InvalidNote_ReturnsFalse()
-        {
-            Note note2 = new Note{ Id = 2 };
-            var result = noteRepository.ValidateNote(note2);
-
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void CheckDuplicateNotes_NotDuplicate_ReturnsFalse()
-        {
-            Note note1 = new Note{ Id = 2 };
-            var result =  noteRepository.CheckDuplicateNotes(note1); 
-
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void CheckDuplicateNotes_IsDuplicate_ReturnsTrue()
-        {
-            Note note1 = new Note { Id = 1 };
-            var result = noteRepository.CheckDuplicateNotes(note1);
-
-            Assert.AreEqual(true, result);
         }
 
     }
