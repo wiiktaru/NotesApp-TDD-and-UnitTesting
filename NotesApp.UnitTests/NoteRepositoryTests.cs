@@ -131,6 +131,8 @@ namespace NotesApp.UnitTests
             Note note1 = new Note { Id = 2, Title = null };
             noteRepository.Notes.Add(note1);
 
+            noteRepository.EditNoteTitle(note1, "AA");
+
             Assert.AreEqual("AA", note1.Title);
 
         }
