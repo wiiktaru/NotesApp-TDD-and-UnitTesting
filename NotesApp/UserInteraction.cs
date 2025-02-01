@@ -8,19 +8,21 @@ namespace NotesApp
 {
     public class UserInteraction
     {
-        public int ValidateNoteId(string noteId)
+        public bool ValidateNoteId(string noteId)
         {
             if (!int.TryParse(noteId, out int result))
             {
-                throw new ArgumentException("Virhe, syötä kelvollinen kokonaisluku.");
+              Console.WriteLine("Virhe, syötä kelvollinen kokonaisluku.");
+                return false;
             }
 
             if (result <= 0)
             {
-                throw new ArgumentException("Virhe, syötä positiivinen kokonaisluku.");
+                Console.WriteLine("Virhe, syötä positiivinen kokonaisluku.");
+                return false;
             }
 
-            return result;    
+            return true;    
         }
     }
 }

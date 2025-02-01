@@ -12,6 +12,9 @@ namespace NotesApp
         private bool noteValidation = false; 
         private bool duplicateNote = false;
 
+        private UserInteraction userInteraction;
+        private bool validateNoteId = false;
+
         public NoteRepository() 
         {
             Notes = new List<Note>();
@@ -90,9 +93,11 @@ namespace NotesApp
             Console.WriteLine("Virhe, merkintä on tyhjä, ei listalla tai lista on tyhjä");
         }
 
+        //TODO fix this methood 
         public void EditNoteTitle(Note note, string title)
         {
             noteValidation = ValidateNote(note);
+            validateNoteId = userInteraction.ValidateNoteId(note.Id.ToString());
 
            if (string.IsNullOrWhiteSpace(title))
             {
@@ -100,7 +105,7 @@ namespace NotesApp
                 return;
             }
 
-            if (noteValidation && !duplicateNote)
+            if (noteValidation && validateNoteId)
             {
                 note.Title = title;
                 return;

@@ -19,11 +19,11 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void ValidateNoteId_ValidInput_ReturnsInt()
+        public void ValidateNoteId_ValidInput_ReturnsTrue()
         {
-            int result = userInteraction.ValidateNoteId("1");
+            bool result = userInteraction.ValidateNoteId("1");
 
-            Assert.AreEqual(1, result);
+            Assert.AreEqual(true, result);
         }
 
         [TestMethod]
@@ -35,15 +35,17 @@ namespace NotesApp.UnitTests
         [DataRow("0")]
         public void ValidateNoteId_InvalidInput_ThrowsArgumentException(string input)
         {
-            Assert.ThrowsException<ArgumentException>(() => 
-            userInteraction.ValidateNoteId(input));
+            bool result = userInteraction.ValidateNoteId(input);
+
+            Assert.AreEqual(false, result);
         }
 
         [TestMethod]
         public void ValidateNoteId_NullInput_ThrowsArgumentException()
         {
-            Assert.ThrowsException<ArgumentException>(() =>
-            userInteraction.ValidateNoteId(null));
+            bool result = userInteraction.ValidateNoteId(null);
+
+            Assert.AreEqual(false, result);
         }
     }
 }
