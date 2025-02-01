@@ -10,9 +10,17 @@ namespace NotesApp
     {
         public int ValidateNoteId(string noteId)
         {
-          
-            return int.Parse(noteId);
-            
+            if (!int.TryParse(noteId, out int result))
+            {
+                throw new ArgumentException("Virhe, syötä kelvollinen kokonaisluku.");
+            }
+
+            if (result < 0)
+            {
+                throw new ArgumentException("Virhe, syötä positiivinen kokonaisluku.");
+            }
+
+            return result;    
         }
     }
 }
