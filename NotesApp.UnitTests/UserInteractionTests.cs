@@ -18,11 +18,11 @@ namespace NotesApp.UnitTests
         }
 
         [TestMethod]
-        public void ValidateNoteId_ValidInput_ReturnsTrue()
+        public void ValidateNoteId_ValidInput_ReturnsInt()
         {
-            bool result = userInteraction.ValidateNoteId();
+            int result = userInteraction.ValidateNoteId("1");
 
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(1, result);
         }
     }
 }

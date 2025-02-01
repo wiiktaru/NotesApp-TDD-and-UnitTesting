@@ -8,9 +8,11 @@ namespace NotesApp
 {
     public class UserInteraction
     {
-        public bool ValidateNoteId()
+        public int ValidateNoteId(string noteId)
         {
-            return true;
+          
+            return int.Parse(noteId);
+            
         }
     }
 }
