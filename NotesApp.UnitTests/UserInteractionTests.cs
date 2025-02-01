@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NotesApp
+namespace NotesApp.UnitTests
 {
-    public class UserInteraction
+    internal class UserInteractionTests
     {
-        
     }
 }
