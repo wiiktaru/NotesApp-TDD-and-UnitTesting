@@ -82,10 +82,12 @@ namespace NotesApp
                     if (item.Id == note.Id)
                     {
                         Notes.Remove(item);
-                        break;
+                        return;
                     }
                 }
             }
+
+            Console.WriteLine("Virhe, merkintä on tyhjä, ei listalla tai lista on tyhjä");
         }
 
             //TODO Simplify this method 

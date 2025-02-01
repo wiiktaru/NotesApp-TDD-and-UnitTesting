@@ -61,6 +61,11 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void DeleteNote_EmptyNotesList_DoesNotDeleteNoteFromList()
         {
+            //delete initialized note from Notes list
+            noteRepository.DeleteNote(note);
+
+            noteRepository.DeleteNote(note);
+
             Assert.AreEqual(0, noteRepository.Notes.Count);
         }
 
