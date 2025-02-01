@@ -32,6 +32,7 @@ namespace NotesApp.UnitTests
         [DataRow("!")]
         [DataRow("1.2")]
         [DataRow("-1")]
+        [DataRow("0")]
         public void ValidateNoteId_InvalidInput_ThrowsArgumentException(string input)
         {
             Assert.ThrowsException<ArgumentException>(() => 

@@ -15,7 +15,7 @@ namespace NotesApp
                 throw new ArgumentException("Virhe, syötä kelvollinen kokonaisluku.");
             }
 
-            if (result < 0)
+            if (result <= 0)
             {
                 throw new ArgumentException("Virhe, syötä positiivinen kokonaisluku.");
             }
