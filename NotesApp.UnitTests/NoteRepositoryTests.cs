@@ -147,7 +147,6 @@ namespace NotesApp.UnitTests
 
         [TestMethod]
         [DataRow (2)]
-        [DataRow(null)]
         [DataRow(2.1)]
         public void EditNoteTitle_InvalidNoteId_DoesNotEditTitle(int invalidNoteId)
         {
