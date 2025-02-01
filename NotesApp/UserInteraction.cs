@@ -8,6 +8,9 @@ namespace NotesApp
 {
     public class UserInteraction
     {
-        
+        public bool ValidateNoteId()
+        {
+            return true;
+        }
     }
 }

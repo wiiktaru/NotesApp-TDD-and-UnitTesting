@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 
 namespace NotesApp.UnitTests
 {
-    internal class UserInteractionTests
+    [TestClass]
+    public class UserInteractionTests
     {
+        private UserInteraction userInteraction; 
+
+        [TestInitialize]
+        public void TestInitialization()
+        {
+            userInteraction = new UserInteraction();
+        }
+
         [TestMethod]
         public void ValidateNoteId_ValidInput_ReturnsTrue()
         {
-            bool result = UserInteraction.ValidateNoteId();
+            bool result = userInteraction.ValidateNoteId();
 
-            Assert.AreEqual(true, result );
+            Assert.AreEqual(true, result);
         }
     }
 }
