@@ -2,7 +2,7 @@
 
 ## Description
 
-With this project I aim to practice SOLID principless, code documentation and version control.
+Notess app is a solution where user can create, edit and delete notes. 
 
 With this project I aim to practice test driven development and unit testing.
 
