@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp
 {
+    /// <summary>
+    /// Serves as a repository for storing and managing notes 
+    /// </summary>
     public class NoteRepository
     {
         public List<Note> Notes;
@@ -20,6 +23,11 @@ namespace NotesApp
             Notes = new List<Note>();
         }
 
+        /// <summary>
+        /// Validates a given note by checking if it is null or if it exists in the list of notes. 
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
         public bool ValidateNote(Note note)
         {
             if (note == null)
@@ -43,6 +51,11 @@ namespace NotesApp
             return false;
         }
 
+        /// <summary>
+        /// Chechks if a given note has a duplicate in the list of notes
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
         public bool CheckDuplicateNotes(Note note)
         { 
             noteValidation = ValidateNote(note);
@@ -60,6 +73,10 @@ namespace NotesApp
             return false;
         }
 
+        /// <summary>
+        /// Adds a give note to the list of notes if the note is valid and not a duplicate
+        /// </summary>
+        /// <param name="note"></param>
         public void AddNewNote(Note note)
         {
             noteValidation = ValidateNote(note);
@@ -74,6 +91,10 @@ namespace NotesApp
             Console.WriteLine("Virhe, merkintä on tyhjä tai ei listalla");
         }
 
+        /// <summary>
+        /// Deletes a given note from the list of notes if the note is valid and in the list of notes
+        /// </summary>
+        /// <param name="note"></param>
         public void DeleteNote(Note note)
         {
             noteValidation = ValidateNote(note);
