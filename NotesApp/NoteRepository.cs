@@ -115,24 +115,31 @@ namespace NotesApp
         }
 
         //TODO fix this methood 
-        public void EditNoteTitle(Note note, string title)
+        public void EditNoteTitle(int noteId)
         {
-            noteValidation = ValidateNote(note);
-            validateNoteId = userInteraction.ValidateNoteId(note.Id.ToString());
 
-           if (string.IsNullOrWhiteSpace(title))
+            //noteValidation = ValidateNote(note);
+            foreach (var item in Notes)
+            {
+                if (item.Id == noteId)
+                {
+                  string title = AskUserForNewTitle();
+                  item.Title = title;
+                  Console.WriteLine("Otsikko muutettu onnistuneesti. Uusi otsikko: " + item.Title);
+                }
+            }
+        }
+
+      public string AskUserForNewTitle()
+        {
+            string title = Console.ReadLine(); 
+
+            if (string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
-                return;
             }
 
-            if (noteValidation && validateNoteId)
-            {
-                note.Title = title;
-                return;
-            }
-
-            Console.WriteLine("Virhe, merkintä on tyhjä tai ei listalla");
-        } 
+            return title;
+        }
     }
 }
