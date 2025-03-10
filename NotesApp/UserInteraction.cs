@@ -33,5 +33,17 @@ namespace NotesApp
 
             return true;    
         }
+
+        public string AskUserForNewTitle()
+        {
+            string title = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
+            }
+
+            return title;
+        }
     }
 }

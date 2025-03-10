@@ -109,7 +109,7 @@ namespace NotesApp.UnitTests
         [TestMethod]
         public void EditNoteTitle_ValidNote_EditsTitle()
         {
-            noteRepository.EditNoteTitle(note, "BB");
+            noteRepository.EditNoteTitle("1");
 
             Assert.AreEqual(note.Title, "BB");
         }

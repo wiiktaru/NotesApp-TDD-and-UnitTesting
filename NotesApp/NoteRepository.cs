@@ -117,29 +117,17 @@ namespace NotesApp
         //TODO fix this methood 
         public void EditNoteTitle(int noteId)
         {
-
-            //noteValidation = ValidateNote(note);
             foreach (var item in Notes)
             {
                 if (item.Id == noteId)
                 {
-                  string title = AskUserForNewTitle();
+                  string title = userInteraction.AskUserForNewTitle();
                   item.Title = title;
                   Console.WriteLine("Otsikko muutettu onnistuneesti. Uusi otsikko: " + item.Title);
                 }
             }
         }
 
-      public string AskUserForNewTitle()
-        {
-            string title = Console.ReadLine(); 
-
-            if (string.IsNullOrWhiteSpace(title))
-            {
-                Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
-            }
-
-            return title;
-        }
+      
     }
 }

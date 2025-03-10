@@ -47,5 +47,13 @@ namespace NotesApp.UnitTests
 
             Assert.AreEqual(false, result);
         }
+
+        [TestMethod]
+        public void AskUserForNewTitle_ValidTitle_ReturnsString()
+        {
+            string title = userInteraction.AskUserForNewTitle();
+
+            Assert.IsNotInstanceOfType(title, typeof(string));
+        }
     }
 }
