@@ -38,9 +38,10 @@ namespace NotesApp
         {
             string title = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(title))
+            while(string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("Virhe, otsikko ei voi olla tyhjä tai sisältää vain välilyöntejä");
+                title = Console.ReadLine();
             }
 
             return title;
