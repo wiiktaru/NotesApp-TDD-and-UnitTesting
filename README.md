@@ -20,7 +20,14 @@ The main entry point of the solution will be the Program class located in the Pr
 
 ## Technologies used
 
-Visual Studio
-.NET
-C#
-MSTest
+Back-end: 
+- C#
+- 
+IDE:
+- Visual Studi
+
+Frameworks:
+- .NET Framework
+
+Testing:
+- MSTest
